@@ -6,38 +6,57 @@
 
 body{
   font-family: 'Open Sans', sans-serif;
+  height:100vh;
+  width:100vw;
 }
 
-main.container-allpage{
+.main-container{
   background:linear-gradient(45deg, aliceblue, steelblue);
+  height:100%;
   width:100%;
-  height:100vh;
-  display:flex;
-  justify-content: center;
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
+
 
 .container-content{
   width:70%;
   height:60vh;
   display:flex;
+  margin:100px;
 }
 
 .container-content .paintings{
   width:80%;
+  min-width:550px;
   height:100%;
   background-color: aquamarine;
 }
 
-.container-content .paintings img, .mini-paintings img{
+ul{
+  list-style: none;
+  height:100%;
+  width:100%;
+}
+
+li.mini-item{
+  height:20%;
+  width:100%;
+  position: relative;
+  background-color: yellow;
+}
+
+
+.container-content .paintings img, .mini-item>img{
   object-fit: cover;
   width:100%;
   height:100%;
-  object-position: center;
 }
 
-.container-content .miniatures{
+.miniatures{
   width:20%;
+  min-width:60px;
   height:100%;
   background-color: cadetblue;
   position: relative;
@@ -56,26 +75,24 @@ main.container-allpage{
   display: block;
 }
 
-.miniatures .mini-paintings{
-  height:20%;
-  width:100%;
-  position: relative;
-  
-}
 
-.mini-paintings .shadow{
+.shadow{
+  content:'';
   background-color: rgba(0,0,0,0.5);
   width:100%;
   height:100%;
-  object-fit: cover;
   position: absolute;
   top:0;
   left:0;
 }
 
-.mini-paintings .shadow.active{
-  background-color: transparent;
+.mini-item.active{
+  background:none;
   border:2px solid white;
+}
+
+.mini-item.active .shadow{
+  display: none;
 }
 
 
@@ -91,6 +108,9 @@ main.container-allpage{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.arrow:hover{
+  background-color: rgba(255, 255, 255, 0.884);
 }
 
 .arrow.up{

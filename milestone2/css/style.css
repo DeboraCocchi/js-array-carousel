@@ -56,14 +56,14 @@ main.container-allpage{
   display: block;
 }
 
-.miniatures .mini-paintings{
+.miniatures .mini-paintings-container{
   height:20%;
   width:100%;
   position: relative;
   
 }
 
-.mini-paintings .shadow{
+.shadow{
   background-color: rgba(0,0,0,0.5);
   width:100%;
   height:100%;

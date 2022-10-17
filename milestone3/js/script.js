@@ -3,7 +3,7 @@ const paintingsArray = [
   'bruegel.jpeg',
   'dali.jpeg',
   'magritte.jpeg',
-  'cabanel.png',
+  'cabanel.jpeg',
 ];
 
 
@@ -15,79 +15,69 @@ for(let i=0; i<paintingsArray.length;i++){
   paintingsTags += `
   <img class="item" src="img/${paintingsArray[i]}" alt="${paintingsArray[i]}">
   `;
-
 }
 
 // inserisco la maxi stringa concatenata di tag creati con literals
 paintings.innerHTML=paintingsTags;
+
+
+
+// miniature
+
+let miniatureTag = '';
+
+const miniatures = document.querySelector('.miniatures');
+const miniPaintingsList =document.createElement('ul');
+miniatures.append(miniPaintingsList);
+const ShadowContainer = document.createElement('div');
+ShadowContainer.className='shadow';
+
+
+for (let i=0;i<paintingsArray.length;i++){
+  miniatureTag = `<img src="img/${paintingsArray[i]}" alt="${paintingsArray[i]}"><div class="shadow active"></div>`;
+  const miniCards = document.createElement('li');
+  miniCards.className='mini-item';
+  miniCards.append(ShadowContainer);
+  miniPaintingsList.append(miniCards);
+  console.log(miniCards);
+  
+  miniCards.innerHTML=miniatureTag;
+};
+
+
+// // ciclo
 
 // caratteristiche del default sul primo dipinto; inizializzo il contatore
 
 let counterPainting = 0;
 const items = document.getElementsByClassName('item');
 items[counterPainting].classList.add('active');
+const miniItems = document.getElementsByClassName('mini-item');
+miniItems[counterPainting].classList.add('active');
 const up = document.querySelector('.arrow.up');
 const down = document.querySelector('.arrow.down');
-up.classList.add('hide');
 
 down.addEventListener('click', function(){
   items[counterPainting].classList.remove('active');
-  console.log(counterPainting);
+  miniItems[counterPainting].classList.remove('active');
   if(counterPainting=== paintingsArray.length -1){
     counterPainting=0;
   }else{  
   ++counterPainting;}
   items[counterPainting].classList.add('active');
+  miniItems[counterPainting].classList.add('active');
 
 });
 
 up.addEventListener('click', function(){
   items[counterPainting].classList.remove('active');
-  console.log(counterPainting);
+  miniItems[counterPainting].classList.remove('active');
   if(counterPainting===0){
     counterPainting=paintingsArray.length -1;
   }else{  
   --counterPainting;}
   items[counterPainting].classList.add('active');
-
+  miniItems[counterPainting].classList.add('active');
 });
-
-
-
-
-/* MINIATURE MOMENTANEAMENTE IN PAUSA
-
-mi occupo delle miniature:
-1-creo il campo - per ora vuoto - dei tag, che andrò poi ad arricchire;
-2-prendo il container in cui inserirò i tag
-*/
-// let miniatureTag = '';
-// const miniatures = document.querySelector('.miniatures');
-
-// // creo il div mini-paintings
-// const divForMini = document.createElement('div');
-// divForMini.className='mini-paintings';
-
-// const miniaturesArray=[];
-
-
-// for(let i=0; i<paintingsArray.length;i++){
-//   miniatureTag = `
-//   <div class="shadow">
-//   <img class="mini-item" src="img/${paintingsArray[i]}" alt="${paintingsArray[i]}"></div>
-//   `;
-
-//   console.log(miniatureTag , i);
-//   divForMini.innerHTML=miniatureTag;
-//   console.log(divForMini);
-  
-
-//   // fin qui ok
-  
-  
-
-
-// }
-
 
 
