@@ -28,6 +28,7 @@ const items = document.getElementsByClassName('item');
 items[counterPainting].classList.add('active');
 const up = document.querySelector('.arrow.up');
 const down = document.querySelector('.arrow.down');
+up.classList.add('hide');
 
 down.addEventListener('click', function(){
   items[counterPainting].classList.remove('active');
